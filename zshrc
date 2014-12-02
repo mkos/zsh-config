@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+CONFIG=$HOME/repos/zsh-config
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -36,6 +37,7 @@ ZSH_THEME="default"
 plugins=(git vi-mode screen)
 
 source $ZSH/oh-my-zsh.sh
+source $CONFIG/help.zsh
 
 # setting path
 
