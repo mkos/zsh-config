@@ -9,7 +9,7 @@ function help() {
 
 function gitall
 {
-  find . -type d -a -name .git | while read d
+  find -L . -type d -a -name .git | while read d
   do
     local x=${d%.git}
     echo "$fg[yellow]========= $x$reset_color"
