@@ -2,3 +2,4 @@ General help
 ============
 
 __help__ - prints out this help. Help file location is configured via `$HELPFILE` variable
+__gitall__ _git-command_ - search for all git repos in all subirectories and execute `git git-command` in each

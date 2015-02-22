@@ -38,7 +38,7 @@ ZSH_THEME="default"
 plugins=(git vi-mode screen scala sbt zshmarks)
 
 source $ZSH/oh-my-zsh.sh
-source $CONFIG/help.zsh
+source $CONFIG/util.zsh
 
 # setting path
 
