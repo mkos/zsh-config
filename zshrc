@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh configuration.
+# Path to your oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
 CONFIG=$HOME/repos/zsh-config
 
@@ -85,3 +85,6 @@ alias slog="journalctl -xn"
 
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
+
+# this should be called as a very last command
+tmux_autostart
