@@ -40,6 +40,9 @@ plugins=(git vi-mode screen scala sbt zshmarks)
 source $ZSH/oh-my-zsh.sh
 source $CONFIG/util.zsh
 
+# stop capturing ctrl-d (for tmux logout)
+setopt IGNORE_EOF
+
 # setting path
 
 export JAVABIN=/opt/java6/bin:/opt/java6/jre/bin
@@ -63,6 +66,10 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/${UID:-$(id -u)}}/ssh_auth_so
 
 # eval `dircolors ~/.dir_colors`
 
+# ZLE mappings
+# maps function from util.zsh to a zle command
+zle -N tmux-detach-client tmux_detach_logout
+
 # aliases
 
 alias ls="ls --color=auto --group-directories-first"
@@ -85,6 +92,7 @@ alias slog="journalctl -xn"
 
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
+bindkey "^D"    tmux-detach-client
 
 # this should be called as a very last command
 tmux_autostart

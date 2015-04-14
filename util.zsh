@@ -21,7 +21,6 @@ function gitall {
 # If tmux session exists, attaches to it, creating new one otherwise.
 # this should be called from zshrc as a very last command
 function tmux_autostart() {
-    # This should always be run last either in .bashrc or as a script in .bashrc.d
     if [[ -z "$TMUX" ]]; then
         tmux has-session &> /dev/null
         if [ $? -eq 1 ]; then
@@ -33,3 +32,14 @@ function tmux_autostart() {
         fi
     fi
 }
+
+# this fuction is the default action taken on Ctrl-D hit on empty line. If in tmux, it detaches
+# client, logging out otherwise
+function tmux_detach_logout() {
+    if [[ -z "$TMUX" ]]; then
+        tmux detach-client
+    else
+        exit
+    fi
+}
+
