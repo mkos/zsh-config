@@ -37,9 +37,9 @@ function tmux_autostart() {
 # client, logging out otherwise
 function tmux_detach_logout() {
     if [[ -z "$TMUX" ]]; then
-        tmux detach-client
-    else
         exit
+    else
+        tmux detach-client
     fi
 }
 
