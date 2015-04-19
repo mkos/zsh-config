@@ -6,14 +6,20 @@ function help() {
 
 # modified version of original file taken from
 # https://github.com/derekwyatt/dotfiles/blob/master/zshrc
+#   - added coloring output (ZSH only)
+#   - added checking for number of parameters
 
 function gitall {
-  find -L . -type d -a -name .git | while read d
-  do
-    local x=${d%.git}
-    echo "$fg[yellow]========= $x$reset_color"
-    (cd $x; git "$@")
-  done
+    if [[ $# -gt 0 ]]; then
+        find -L . -type d -a -name .git | while read d
+        do
+            local x=${d%.git}
+            echo "$fg[yellow]========= $x$reset_color"
+            (cd $x; git "$@")
+        done
+    else
+        echo "function needs parameters passed to git"
+    fi
 }
 
 # original version from http://blog.thelinuxkid.com/2013/06/automatically-start-tmux-on-ssh.html
