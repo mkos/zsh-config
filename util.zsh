@@ -55,3 +55,7 @@ function tmux_detach_logout() {
     fi
 }
 
+# reloads shell config file
+function reload_config() {
+    source $HOME/.zshrc
+}
