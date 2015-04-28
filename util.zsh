@@ -59,3 +59,25 @@ function tmux_detach_logout() {
 function reload_config() {
     source $HOME/.zshrc
 }
+
+# rsync parameters tuned up to remote filesystem being NTFS - due to NTFS driver on linux
+# root account on the other side is required for proper sync. Option --modify-window is
+# required due to network delays and clock time differences and resolution of a NTFS
+# timestamps.
+#
+# function arguments
+#   - local dir
+#   - remote dir
+function syncdir() {
+
+    local localdir=$1
+    local remotedir=$2
+    rsync -rvtW \
+        --delete \
+        --modify-window=30 \
+        --progress \
+        -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+        $localdir \
+        $remotedir
+
+}
