@@ -81,3 +81,25 @@ function syncdir() {
         $remotedir
 
 }
+
+# this function synchronizes either single entry or all of the entries in the
+# config file defined in $SYNCRC global variable. If the parameter is equal to
+# "all", all entries are synced
+function syncname() {
+
+    [[ $# == 0 ]] && { echo "Name not given."; return 1 }
+    [[ -z $SYNCRC ]] && { echo "Global variable \$SYNCRC is not set"; return 1 }
+    [[ ! -f $SYNCRC ]] && { echo "config file $SYNCRC does not exist"; return 1 }
+
+    name_found=0
+    while IFS="," read name src dest; do
+        if [[ $1 == $name ]] || [[ $1 == "all" ]]; then
+            name_found=1
+            echo "syncing $src to $dest"
+            syncdir $src $dest
+        fi
+    done < $SYNCRC
+
+    [[ $name_found == 0 ]] && { echo "Name $1 not found in $syncrc config file"; return 1 }
+
+}
