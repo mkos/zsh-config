@@ -103,3 +103,11 @@ function syncname() {
     [[ $name_found == 0 ]] && { echo "Name $1 not found in $syncrc config file"; return 1 }
 
 }
+
+# prints out date of last system update with pacman
+function lastpac() {
+    date -d "`cat /var/log/pacman.log | \
+        grep "starting full system upgrade" | \
+        tail -1 | \
+        grep --color=never -o '[-0-9]* [:0-9]*'`"
+}
