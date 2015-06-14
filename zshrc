@@ -7,7 +7,7 @@ CONFIG=$HOME/repos/zsh-config
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="gentoo-mod"
-ZSH_THEME="default"
+ZSH_THEME="robbyrussell"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
