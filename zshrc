@@ -99,3 +99,7 @@ bindkey "^D"    tmux-detach-client
 
 # this should be called as a very last command
 tmux_autostart
+
+# python pip autocompletion on
+compctl -K _pip_completion pip
+
