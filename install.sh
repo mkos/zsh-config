@@ -37,11 +37,13 @@ exit_if_not_installed git
 exit_if_not_installed gvim
 exit_if_not_installed zsh
 exit_if_not_installed xsel
+exit_if_not_installed pip
 
-## create required fonts
+## create required dirs
 create_dir_if_not_exists $REPODIR
 create_dir_if_not_exists $VIMBUNDLE
 create_dir_if_not_exists ~/.fonts
+create_dir_if_not_exists ~/.virtualenvs
 
 ## public and third party repos
 clone_git_repo https://github.com/mkos/zsh-config.git           $REPODIR/zsh-config

@@ -103,3 +103,8 @@ tmux_autostart
 # python pip autocompletion on
 compctl -K _pip_completion pip
 
+# virtualenv config
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/repos
+source /usr/local/bin/virtualenvwrapper.sh
+
