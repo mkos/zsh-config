@@ -35,7 +35,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 #   * zshmarks - git clone git://github.com/jocelynmallon/zshmarks.git
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode screen scala sbt zshmarks)
+plugins=(git vi-mode screen scala sbt zshmarks virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 source $CONFIG/util.zsh
@@ -45,7 +45,8 @@ setopt IGNORE_EOF
 
 # setting path
 
-export JAVABIN=/opt/java6/bin:/opt/java6/jre/bin
+export JAVA_HOME=/opt/jdk8
+export JAVABIN=$JAVA_HOME/bin:$JAVA_HOME/jre/bin
 export ANDROIDBIN=/opt/android-sdk/tools:/opt/android-sdk/platform-tools
 export HOMEBIN=$HOME/bin
 export SBIN=/sbin:/usr/local/sbin:/usr/sbin

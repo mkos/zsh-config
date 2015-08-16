@@ -25,6 +25,14 @@ function exit_if_not_installed() {
     fi
 }
 
+function exit_if_pip_pkg_not_installed() {
+    pip list | egrep "^$1\s" 1>/dev/null
+    if [[ $? != 0 ]]; then
+        echo install pip package \`$1\` and rerun the script
+        exit 1;
+    fi
+}
+
 function make_link() {
     if [[ ! -L $2 && ! "$(readlink $2)" = "$1" ]]; then
         ln -sf $1 $2
@@ -38,6 +46,12 @@ exit_if_not_installed gvim
 exit_if_not_installed zsh
 exit_if_not_installed xsel
 exit_if_not_installed pip
+
+## check if required python packages are avaliable
+exit_if_pip_pkg_not_installed virtualenv
+exit_if_pip_pkg_not_installed virtualenvwrapper
+exit_if_pip_pkg_not_installed Markdown
+exit_if_pip_pkg_not_installed ipython
 
 ## create required dirs
 create_dir_if_not_exists $REPODIR
@@ -67,4 +81,4 @@ make_link $REPODIR/dotfiles/systemd                 $HOME/.config/systemd
 make_link $REPODIR/dotfiles/conky/conky_horizontal  $HOME/.conkyrc
 
 echo "installing Source Code Pro font"
-fc-cache -f -v ~/.fonts/source-code-pro
+fc-cache -f -v ~/.fonts/source-code-pro 1>/dev/null
