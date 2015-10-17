@@ -97,6 +97,7 @@ alias slog="journalctl -xn"
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
 bindkey "^D"    tmux-detach-client
+bindkey "^R"    history-incremental-search-backward
 
 # this should be called as a very last command
 tmux_autostart

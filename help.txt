@@ -6,9 +6,19 @@ __gitall__ _git-command_ - search for all git repos in all subirectories and exe
 __reload_config__ - reload .zshrc
 __syncdir__ _localdir_ _remotedir_ - synchronizes with rsync with remote host
 __syncname__ _name_ - synchronizes dirs configured in ~/config/sync/syncrc with given name
---lastpac__ - shows date of last system update with pacman
+__lastpac__ - shows date of last system update with pacman
+
+Keybindings
+===========
+
+* __Ctrl-R__ - reverse history search
 
 Programming
 ===========
 
 * `$#` - provides number of function or script parameters
+
+Varia
+=====
+
+man zshzle
