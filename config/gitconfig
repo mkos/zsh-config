@@ -1,13 +1,43 @@
-[user]
-	email = kosinski.michal@gmail.com
-	name = kosa
+[credential]
+	helper = wincred
+[http]
+	sslverify = true
 [alias]
 	ci = commit
 	st = status
 	co = checkout
-	checkout = co
-	ls = log --pretty=format:\"%Cred%h %Cblue%ci %Cgreen%cn %Creset%s\"
-	ll = log --stat
+	br = branch
+	ls = log --stat
+	ll = log --pretty=oneline
+	dff = difftool --dir-diff
+	aliases = config --get-regexp alias
+	vis = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cr %C(blue)%an%Creset\"
+	visall = log --graph --all --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cr %C(blue)%an%Creset\"
+	brv = branch -vv
+[user]
+	name = Michal Kosinski
+	email = kosinski.michal@gmail.com
+[merge]
+	tool = gvimdiff
+[diff]
+	tool = winmerge
+[difftool "vimdiff"]
+	path = C:\\Program Files (x86)\\Vim\\vim74\\gvim.exe
+	cmd = gvim -d
+[core]
+	autocrlf = input    # for Windows: true
+[difftool "winmerge"]
+	cmd = \"$PROGRAMFILES/WinMerge/WinMergeU.exe\" -e -u -dl \"Local\" -dr \"Remote\" \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[push]
+	default = simple
+[mergetool "winmerge"]
+	cmd = \"c:\\Program Files (x86)\\WinMerge\\WinMergeU.exe\" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+[mergetool]
+	prompt = false
+[clean]
+	requireForce = false
 [color]
 	ui = true
 [push]

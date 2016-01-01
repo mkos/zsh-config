@@ -103,10 +103,10 @@ clone_git_repo $DROPBOX/repos/dotfiles                          $REPODIR/dotfile
 ## create links to config files
 make_link $REPODIR/zsh-config/zshrc                 $HOME/.zshrc
 make_link $VIMBUNDLE/vim-config/vimrc               $HOME/.vimrc
-make_link $REPODIR/dotfiles/gitconfig               $HOME/.gitconfig
+make_link $REPODIR/zsh-config/config/gitconfig      $HOME/.gitconfig
 make_link $REPODIR/dotfiles/xorg/xresources         $HOME/.Xresources
 make_link $REPODIR/dotfiles/systemd                 $HOME/.config/systemd
-make_link $REPODIR/zsh-config/tmux.conf             $HOME/.tmux.conf
+make_link $REPODIR/zsh-config/config/tmux.conf      $HOME/.tmux.conf
 
 ## non-standard installation steps
 if [[ $INSTALLTYPE == $XWINDOWS ]]; then
