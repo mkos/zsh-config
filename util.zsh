@@ -58,7 +58,7 @@ function tmux_detach_logout() {
 # reloads shell config file
 function reload_config() {
     source $HOME/.zshrc
-    if [[ -z "$TMUX" ]]; then
+    if [[ ! -z "$TMUX" ]]; then
         tmux source-file $CONFIG/config/tmux.conf
     fi
 }
