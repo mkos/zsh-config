@@ -114,3 +114,6 @@ if [[ $INSTALLTYPE == $XWINDOWS ]]; then
     echo "installing Source Code Pro font"
     fc-cache -f -v ~/.fonts/source-code-pro 1>/dev/null
 fi
+
+echo "installing VIM plugins"
+vim +PluginInstall +qall
