@@ -1,0 +1,14 @@
+[user]
+	email = kosinski.michal@gmail.com
+	name = kosa
+[alias]
+	ci = commit
+	st = status
+	co = checkout
+	checkout = co
+	ls = log --pretty=format:\"%Cred%h %Cblue%ci %Cgreen%cn %Creset%s\"
+	ll = log --stat
+[color]
+	ui = true
+[push]
+	default = matching
