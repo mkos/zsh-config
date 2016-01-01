@@ -80,7 +80,7 @@ alias ls="ls --color=auto --group-directories-first"
 alias svim="gvim --remote-silent"
 alias lx="ls --group-directories-first -AF"
 alias cls="clear"
-alias ds="du -h --max-depth=1"
+alias ds="du -h --max-depth=1 | sort -h -r"
 
 # ssh-agent aliases
 alias keyup="ssh-add $HOME/.ssh/id_rsa.key"

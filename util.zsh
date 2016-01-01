@@ -58,6 +58,8 @@ function tmux_detach_logout() {
 # reloads shell config file
 function reload_config() {
     source $HOME/.zshrc
+    if [[ -z "$TMUX" ]]; then
+        tmux source-file $CONFIG/config/tmux.conf
 }
 
 # rsync parameters tuned up to remote filesystem being NTFS - due to NTFS driver on linux

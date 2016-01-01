@@ -79,6 +79,7 @@ make_link $REPODIR/dotfiles/gitconfig               $HOME/.gitconfig
 make_link $REPODIR/dotfiles/xorg/xresources         $HOME/.Xresources
 make_link $REPODIR/dotfiles/systemd                 $HOME/.config/systemd
 make_link $REPODIR/dotfiles/conky/conky_horizontal  $HOME/.conkyrc
+make_link $REPODIR/zsh-config/tmux.conf             $HOME/.tmux.conf
 
 echo "installing Source Code Pro font"
 fc-cache -f -v ~/.fonts/source-code-pro 1>/dev/null
