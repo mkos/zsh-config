@@ -87,6 +87,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias keyup="ssh-add $HOME/.ssh/id_rsa.key"
 alias keydown="ssh-add -D"
 alias keyst="ssh-add -l"
+alias agentup="eval `ssh-agent`"
 
 # systemctl aliases
 alias sc="systemctl"
