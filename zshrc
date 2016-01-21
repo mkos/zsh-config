@@ -86,6 +86,7 @@ alias ds="du -h --max-depth=1 | sort -h -r"
 alias keyup="ssh-add $HOME/.ssh/id_rsa.key"
 alias keydown="ssh-add -D"
 alias keyst="ssh-add -l"
+alias agentup="eval `ssh-agent`"
 
 # systemctl aliases
 alias sc="systemctl"
