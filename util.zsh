@@ -126,3 +126,16 @@ function _pip_completion {
              PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 
+# virtualenv(wrapper) shortcuts
+
+function vv {
+    case $1 in
+        '') echo 'usage: vv off | <prjname> | cd | link | mk <prjname>';;
+        'off') deactivate;;
+        'cd') cdproject;;
+        'link') setvirtualenvproject;;
+        'mk') if [[ $2 != '' ]]; then mkvirtualenv $2; else echo please provide a project name.; fi;;
+        'rm') if [[ $2 != '' ]]; then rmvirtualenv $2; else echo please provide a project name.; fi;;
+        *) workon $1;;
+    esac
+}
