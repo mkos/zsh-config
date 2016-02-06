@@ -2,12 +2,16 @@
 ZSH=$HOME/.oh-my-zsh
 CONFIG=$HOME/repos/zsh-config
 
+# Set customization directory to this repo
+ZSH_CUSTOM=$CONFIG
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="gentoo-mod"
-ZSH_THEME="bira"
+ZSH_THEME="gentoo-mod"
+#ZSH_THEME="bira"
+#ZSH_THEME="jonathan"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
