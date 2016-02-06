@@ -25,8 +25,7 @@ ZSH_THEME="gentoo-mod"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 #   * zshmarks - git clone git://github.com/jocelynmallon/zshmarks.git
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode screen scala sbt zshmarks virtualenvwrapper)
+plugins=(git vi-mode screen scala sbt zshmarks)
 
 source $ZSH/oh-my-zsh.sh
 source $CONFIG/util.zsh
