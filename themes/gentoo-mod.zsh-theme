@@ -13,7 +13,7 @@ function venv_name {
 }
 
 PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%~) %{$reset_color%}'
-RPROMPT='%{$fg_bold[red]%}$(git_current_branch)[$(git_prompt_status)]%{${fg_bold[yellow]}%}$venv_name%{$reset_color%}'
+RPROMPT='%{$fg_bold[red]%}$(git_current_branch)$(git_commits_ahead)$(git_prompt_status)%{${fg_bold[yellow]}%}$venv_name%{$reset_color%}'
 
 # possible git_* functions:
 # git_commits_ahead
@@ -36,5 +36,5 @@ ZSH_THEME_GIT_PROMPT_DELETED="-"
 ZSH_THEME_GIT_PROMPT_RENAMED="*"
 ZSH_THEME_GIT_PROMPT_UNMERGED="═"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="!"
-ZSH_THEME_GIT_PROMPT_AHEAD=">$(git_commits_ahead)"
+ZSH_THEME_GIT_PROMPT_AHEAD=">"
 ZSH_THEME_GIT_PROMPT_BEHIND="<"
