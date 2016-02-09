@@ -36,12 +36,32 @@ function exit_if_pip_pkg_not_installed() {
         exit 1;
     fi
 }
-
+ 
 function make_link() {
     if [[ ! -L $2 && ! "$(readlink $2)" = "$1" ]]; then
         ln -sf $1 $2
         echo created link from \'$1\' to \'$2\'
     fi
+}
+
+function github_repo {
+    if [[ $# != 3 ]]; then
+        echo 'function github_repo() requires 3 parameters: type, user, repo'
+        exit 1;
+    fi
+
+    local rtype=$1
+    local username=$2
+    local reponame=$3
+    
+    case $rtype in
+        'ssh')
+            echo git@github.com:$username/$reponame.git;;
+        'https')
+            echo https://github.com/$username/$reponame.git;;
+        *)
+            echo 'unknown repo type';;
+    esac
 }
 
 ## choose installation type: 'console-only' or 'xwindows' (default)
