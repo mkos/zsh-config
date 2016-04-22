@@ -100,6 +100,7 @@ compctl -K _pip_completion pip
 # virtualenv config
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/repos
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # sourcing local config files if exist
 if [[ -e $LOCAL_CONFIG ]] && [[ -d $LOCAL_CONFIG ]]; then
