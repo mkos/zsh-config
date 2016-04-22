@@ -31,18 +31,20 @@ function gitall {
 # this should be called from zshrc as a very last command
 
 function tmux_autostart() {
-    if [[ -o login ]]; then
-        if [[ -z "$TMUX" ]]; then
-            tmux has-session &> /dev/null
-            if [ $? -eq 1 ]; then
-              exec tmux new
-              exit
-            else
-              exec tmux attach
-              exit
-            fi
-        fi
-    fi
+	if [[ uname -ne 'Darwin' ]]; then
+	    if [[ -o login ]]; then
+		if [[ -z "$TMUX" ]]; then
+		    tmux has-session &> /dev/null
+		    if [ $? -eq 1 ]; then
+		      exec tmux new
+		      exit
+		    else
+		      exec tmux attach
+		      exit
+		    fi
+		fi
+	    fi
+	fi
 }
 
 # this fuction is the default action taken on Ctrl-D hit on empty line. If in tmux, it detaches
