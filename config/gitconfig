@@ -1,3 +1,11 @@
+# To use this file, instead of linking it include it with following lines
+#
+# [include]
+#   path = /path/to/this/repo/gitconfig
+#
+# in your ~/.gitconfig. This way you can separate machine specific config (like user and email)
+# For reference, see: https://github.com/gitster/git/commit/9b25a0b52e09400719366f0a33d0d0da98bbf7b0
+
 [credential]
 	helper = wincred
 [http]
@@ -14,9 +22,6 @@
 	vis = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cr %C(blue)%an%Creset\"
 	visall = log --graph --all --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cr %C(blue)%an%Creset\"
 	brv = branch -vv
-[user]
-	name = Michal Kosinski
-	email = kosinski.michal@gmail.com
 [merge]
 	tool = gvimdiff
 [diff]
