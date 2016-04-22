@@ -3,7 +3,8 @@ ZSH=$HOME/.oh-my-zsh
 CONFIG=$HOME/repos/zsh-config
 LOCAL_CONFIG=$HOME/.zsh
 
-# Set customization directory to this repo (see [1])
+# Set customization directory to this repo
+# see: https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#using-another-customization-directory
 ZSH_CUSTOM=$CONFIG
 
 # Set name of the theme to load.
@@ -92,8 +93,6 @@ bindkey "\e[8~" end-of-line
 bindkey "^D"    tmux-detach-client
 bindkey "^R"    history-incremental-search-backward
 
-# this should be called as a very last command
-tmux_autostart
 
 # python pip autocompletion on
 compctl -K _pip_completion pip
@@ -112,5 +111,5 @@ fi
 # sourcing other packages
 source /usr/local/bin/virtualenvwrapper.sh
 
-# REFERENCES
-# [1] Using another customization directory https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#using-another-customization-directory
+# this should be called as a very last command
+tmux_autostart
