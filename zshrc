@@ -37,12 +37,8 @@ setopt IGNORE_EOF
 
 # setting path
 
-export JAVA_HOME=/opt/jdk8
-export JAVABIN=$JAVA_HOME/bin:$JAVA_HOME/jre/bin
-export ANDROIDBIN=/opt/android-sdk/tools:/opt/android-sdk/platform-tools
 export HOMEBIN=$HOME/bin
 export SBIN=/sbin:/usr/local/sbin:/usr/sbin
-export SCRIPTS=$HOME/repos/scripts
 
 export PATH=/bin:/usr/bin:/usr/local/bin:/usr/games:$SBIN:$HOMEBIN:$ANDROIDBIN:$JAVABIN:$SCRIPTS
 
@@ -50,7 +46,6 @@ export PATH=/bin:/usr/bin:/usr/local/bin:/usr/games:$SBIN:$HOMEBIN:$ANDROIDBIN:$
 
 export EDITOR="vim"
 export PYTHONDOCS=/usr/share/doc/python2/html
-export NDKROOT=/opt/android-ndk
 
 # for systemd/User ssh-agent
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/${UID:-$(id -u)}}/ssh_auth_sock"
