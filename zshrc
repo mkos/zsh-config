@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
 CONFIG=$HOME/repos/zsh-config
+LOCAL_CONFIG=$HOME/.zsh
 
 # Set customization directory to this repo (see [1])
 ZSH_CUSTOM=$CONFIG
@@ -100,6 +101,15 @@ compctl -K _pip_completion pip
 # virtualenv config
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/repos
+
+# sourcing local config files if exist
+if [[ -e $LOCAL_CONFIG ]] && [[ -d $LOCAL_CONFIG ]]; then
+    for file in `ls $LOCAL_CONFIG`; do
+        source $LOCAL_CONFIG/$file
+    done
+fi
+
+# sourcing other packages
 source /usr/local/bin/virtualenvwrapper.sh
 
 # REFERENCES
