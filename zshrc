@@ -27,7 +27,7 @@ ZSH_THEME="bira"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 #   * zshmarks - git clone git://github.com/jocelynmallon/zshmarks.git
-plugins=(git vi-mode screen scala sbt zshmarks)
+plugins=(git vi-mode screen scala sbt zshmarks virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 source $CONFIG/util.zsh
@@ -35,20 +35,17 @@ source $CONFIG/util.zsh
 # stop capturing ctrl-d (for tmux logout)
 setopt IGNORE_EOF
 
-# setting path
-
-export HOMEBIN=$HOME/bin
-export SBIN=/sbin:/usr/local/sbin:/usr/sbin
-
-export PATH=/bin:/usr/bin:/usr/local/bin:/usr/games:$SBIN:$HOMEBIN:$ANDROIDBIN:$JAVABIN:$SCRIPTS
+# sourcing local config files if exist
+if [[ -e $LOCAL_CONFIG ]] && [[ -d $LOCAL_CONFIG ]]; then
+    for file in `ls $LOCAL_CONFIG`; do
+        source $LOCAL_CONFIG/$file
+    done
+fi
 
 # other env vars
 
 export EDITOR="vim"
 export PYTHONDOCS=/usr/share/doc/python2/html
-
-# for systemd/User ssh-agent
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/${UID:-$(id -u)}}/ssh_auth_sock"
 
 # for syncname()
 export SYNCRC=$HOME/.config/sync/syncrc
@@ -96,13 +93,6 @@ compctl -K _pip_completion pip
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/repos
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-# sourcing local config files if exist
-if [[ -e $LOCAL_CONFIG ]] && [[ -d $LOCAL_CONFIG ]]; then
-    for file in `ls $LOCAL_CONFIG`; do
-        source $LOCAL_CONFIG/$file
-    done
-fi
 
 # sourcing other packages
 source /usr/local/bin/virtualenvwrapper.sh
