@@ -8,8 +8,8 @@ LOCAL_CONFIG=$HOME/.zsh
 ZSH_CUSTOM=$CONFIG
 
 # Set name of the theme to load.
-ZSH_THEME="gentoo-mod"
-#ZSH_THEME="bira"
+#ZSH_THEME="gentoo-mod"
+ZSH_THEME="bira"
 #ZSH_THEME="jonathan"
 
 # Set to this to use case-sensitive completion
