@@ -1,0 +1,5 @@
+export SPARK_HOME="$(brew --prefix apache-spark)/libexec"
+export PYSPARKPATH="$SPARK_HOME/python"
+export PY4JPATH="$PYSPARKPATH/lib/py4j-0.8.2.1-src.zip"
+export PYTHONPATH="$PY4JPATH:$PYSPARKPATH:$PYTHONPATH"
+export MASTER="local"
