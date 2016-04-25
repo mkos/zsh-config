@@ -17,6 +17,11 @@ source ~/.zplug/zplug
 # ZPLUG CONFIG
 # previous themes: gentoo-mod, bira, jonathan
 zplug "robbyrussell/oh-my-zsh", of:oh-my-zsh.sh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/screen", from:oh-my-zsh
+zplug "plugins/virtualenvwrapper", from:oh-my-zsh
+zplug "jocelynmallon/zshmarks"
 zplug "denysdovhan/spaceship-zsh-theme", from:github, as:plugin
 
 SPACESHIP_RUBY_SHOW=false
@@ -35,15 +40,7 @@ ZSH_CUSTOM=$CONFIG
 # Comment this out to disable bi-weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-#   * zshmarks - git clone git://github.com/jocelynmallon/zshmarks.git
-plugins=(git vi-mode screen scala sbt zshmarks virtualenvwrapper)
-
 source $CONFIG/util.zsh
-
-# stop capturing ctrl-d (for tmux logout)
-setopt IGNORE_EOF
 
 # sourcing local config files if exist
 if [[ -e $LOCAL_CONFIG ]] && [[ -d $LOCAL_CONFIG ]]; then
@@ -105,6 +102,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # load zplug plugins
 zplug load
+
+# stop capturing ctrl-d (for tmux logout)
+setopt IGNORE_EOF
 
 # this should be called as a very last command
 tmux_autostart
