@@ -1,3 +1,18 @@
+# make sure that zplug is installed
+
+ZPLUG_HOME=$HOME/.zplug
+
+if [ ! -d $ZPLUG_HOME ] ; then
+    which git
+    if [ $? = 0 ]; then
+        git clone https://github.com/b4b4r07/zplug $ZPLUG_HOME
+    else
+        echo git is not installed.
+    fi
+else
+    source ~/.zplug/zplug
+fi
+
 # Path to your oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
 CONFIG=$HOME/repos/zsh-config
