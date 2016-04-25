@@ -99,5 +99,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # sourcing other packages
 source /usr/local/bin/virtualenvwrapper.sh
 
+# rbenv
+[ -e "$HOME/.rbenv" ] && eval "$(rbenv init -)"
+
+
 # this should be called as a very last command
 tmux_autostart
