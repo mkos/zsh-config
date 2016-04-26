@@ -1,5 +1,35 @@
+# make sure that zplug is installed
+
+ZPLUG_HOME=$HOME/.zplug
+
+if [ ! -d $ZPLUG_HOME ]; then
+    which git
+    if [ $? = 0 ]; then
+        git clone https://github.com/b4b4r07/zplug $ZPLUG_HOME
+    else
+        echo git is not installed.
+    fi
+fi
+
+# source zplug
+source ~/.zplug/zplug
+
+# ZPLUG CONFIG
+# previous themes: gentoo-mod, bira, jonathan
+zplug "robbyrussell/oh-my-zsh", of:oh-my-zsh.sh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/screen", from:oh-my-zsh
+zplug "plugins/virtualenvwrapper", from:oh-my-zsh
+zplug "jocelynmallon/zshmarks"
+zplug "denysdovhan/spaceship-zsh-theme", from:github, as:plugin
+
+SPACESHIP_RUBY_SHOW=false
+SPACESHIP_NVM_SHOW=false
+
+zplug check || zplug install
+
 # Path to your oh-my-zsh configuration
-ZSH=$HOME/.oh-my-zsh
 CONFIG=$HOME/repos/zsh-config
 LOCAL_CONFIG=$HOME/.zsh
 
@@ -7,35 +37,10 @@ LOCAL_CONFIG=$HOME/.zsh
 # see: https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#using-another-customization-directory
 ZSH_CUSTOM=$CONFIG
 
-# Set name of the theme to load.
-# previous themes: gentoo-mod, bira, jonathan
-ZSH_THEME="spaceship"
-
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_NVM_SHOW=false
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
 # Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
-# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-#   * zshmarks - git clone git://github.com/jocelynmallon/zshmarks.git
-plugins=(git vi-mode screen scala sbt zshmarks virtualenvwrapper)
-
-source $ZSH/oh-my-zsh.sh
 source $CONFIG/util.zsh
-
-# stop capturing ctrl-d (for tmux logout)
-setopt IGNORE_EOF
 
 # sourcing local config files if exist
 if [[ -e $LOCAL_CONFIG ]] && [[ -d $LOCAL_CONFIG ]]; then
@@ -45,7 +50,6 @@ if [[ -e $LOCAL_CONFIG ]] && [[ -d $LOCAL_CONFIG ]]; then
 fi
 
 # other env vars
-
 export EDITOR="vim"
 export PYTHONDOCS=/usr/share/doc/python2/html
 
@@ -61,7 +65,6 @@ export SYNCRC=$HOME/.config/sync/syncrc
 zle -N tmux-detach-client tmux_detach_logout
 
 # aliases
-
 alias ls="ls --color=auto --group-directories-first"
 alias svim="gvim --remote-silent"
 alias lx="ls --group-directories-first -AF"
@@ -81,12 +84,10 @@ alias scu="systemctl --user"
 alias slog="journalctl -xn"
 
 # key bindings (to get the bindings, enter 'cat' and push the button)
-
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
 bindkey "^D"    tmux-detach-client
 bindkey "^R"    history-incremental-search-backward
-
 
 # python pip autocompletion on
 compctl -K _pip_completion pip
@@ -102,6 +103,11 @@ source /usr/local/bin/virtualenvwrapper.sh
 # rbenv
 [ -e "$HOME/.rbenv" ] && eval "$(rbenv init -)"
 
+# load zplug plugins
+zplug load
+
+# stop capturing ctrl-d (for tmux logout)
+setopt IGNORE_EOF
 
 # this should be called as a very last command
 tmux_autostart
