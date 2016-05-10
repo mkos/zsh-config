@@ -73,6 +73,57 @@ function github_repo {
     esac
 }
 
+function make_zshrc_source_file {
+    if [[ $# != 2 ]]; then
+        echo 'function make_zshrc_source_file() requires 2 parameters'
+        exit 1;
+    fi
+
+    local from_file=$1
+    local to_file=$2
+
+    if [[ -f $to_file ]]; then
+        echo "Warning: '$to_file' exists! Skipping creation"
+    else
+        echo "source $1" > $2
+        echo "'$to_file' created"
+    fi
+}
+
+function make_vimrc_source_file {
+    if [[ $# != 2 ]]; then
+        echo 'function make_vimrc_source_file() requires 2 parameters'
+        exit 1;
+    fi
+
+    local from_file=$1
+    local to_file=$2
+
+    if [[ -f $to_file ]]; then
+        echo "Warning: '$to_file' exists! Skipping creation"
+    else
+        echo "source $1" > $2
+        echo "'$to_file' created"
+    fi
+}
+
+function make_gitconfig_source_file {
+    if [[ $# != 2 ]]; then
+        echo 'function make_vimrc_source_file() requires 2 parameters'
+        exit 1;
+    fi
+
+    local from_file=$1
+    local to_file=$2
+
+    if [[ -f $to_file ]]; then
+        echo "Warning: '$to_file' exists! Skipping creation"
+    else
+        echo "[include]\n    path = $1" > $2
+        echo "'$to_file' created"
+    fi
+}
+
 ## choose installation type: 'console-only' or 'xwindows' (default)
 case $1 in
     'minimal')
@@ -150,9 +201,9 @@ if [[ $INSTALLTYPE == $XWINDOWS ]]; then
 fi
 
 ## create links to config files
-make_link $REPODIR/zsh-config/zshrc                 $HOME/.zshrc
-make_link $VIMBUNDLE/vim-config/vimrc               $HOME/.vimrc
-make_link $REPODIR/zsh-config/config/gitconfig      $HOME/.gitconfig
+make_zshrc_source_file      $REPODIR/zsh-config/zshrc                 $HOME/.zshrc
+make_vimrc_source_file      $VIMBUNDLE/vim-config/vimrc               $HOME/.vimrc
+make_gitconfig_source_file  $REPODIR/zsh-config/config/gitconfig      $HOME/.gitconfig
 
 if [[ $INSTALLTYPE == $XWINDOWS ]]; then
     make_link $REPODIR/dotfiles/xorg/xresources         $HOME/.Xresources
