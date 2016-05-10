@@ -119,7 +119,7 @@ function make_gitconfig_source_file {
     if [[ -f $to_file ]]; then
         echo "Warning: '$to_file' exists! Skipping creation"
     else
-        echo "[include]\n    path = $1" > $2
+        echo -e "[include]\n    path = $1" > $2
         echo "'$to_file' created"
     fi
 }
