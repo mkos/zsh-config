@@ -187,6 +187,7 @@ if [[ $INSTALLTYPE == $XWINDOWS ]]; then
                ~/.fonts/source-code-pro
 fi
 clone_git_repo https://github.com/mkos/zsh-config.git           $REPODIR/zsh-config
+clone_git_repo https://github.com/zplug/zplug.git               $REPODIR/zplug
 clone_git_repo https://github.com/mkos/vim-config.git           $VIMBUNDLE/vim-config
 clone_git_repo https://github.com/gmarik/Vundle.vim.git         $VIMBUNDLE/Vundle.vim
 #clone_git_repo https://github.com/robbyrussell/oh-my-zsh.git    $HOME/.oh-my-zsh
