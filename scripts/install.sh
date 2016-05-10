@@ -10,20 +10,20 @@ XWINDOWS=2
 CONSOLEONLY=3
 PYTHON=4
 
-function create_dir_if_not_exists() {
+function create_dir_if_not_exists {
     if [[ ! -d $1 ]]; then
         mkdir $1
         echo creating $1
     fi
 }
 
-function clone_git_repo() {
+function clone_git_repo {
     if [[ ! -d $2 ]]; then
         git clone $1 $2
     fi
 }
 
-function exit_if_not_installed() {
+function exit_if_not_installed {
     which $1 1>/dev/null
     if [[ $? != 0 ]]; then 
         echo install \'$1\' first and rerun script
@@ -31,14 +31,14 @@ function exit_if_not_installed() {
     fi
 }
 
-function warn_if_not_installed() {
+function warn_if_not_installed {
     which $1 1>/dev/null
     if [[ $? != 0 ]]; then 
         echo Warning: \'$1\' is not installed.
     fi
 }
 
-function exit_if_pip_pkg_not_installed() {
+function exit_if_pip_pkg_not_installed {
     pip list | egrep "^$1\s" 1>/dev/null
     if [[ $? != 0 ]]; then
         echo install pip package \`$1\` and rerun the script
@@ -46,7 +46,7 @@ function exit_if_pip_pkg_not_installed() {
     fi
 }
  
-function make_link() {
+function make_link {
     if [[ ! -L $2 && ! "$(readlink $2)" = "$1" ]]; then
         ln -sf $1 $2
         echo created link from \'$1\' to \'$2\'
