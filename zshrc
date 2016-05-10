@@ -16,7 +16,7 @@ source ~/.zplug/zplug
 
 # ZPLUG CONFIG
 # previous themes: gentoo-mod, bira, jonathan
-zplug "robbyrussell/oh-my-zsh", of:oh-my-zsh.sh
+zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/screen", from:oh-my-zsh
