@@ -5,8 +5,10 @@ VIMBUNDLE=$HOME/.vim/bundle
 DROPBOX=$HOME/Dropbox
 
 ## installation types
-XWINDOWS=1
-CONSOLEONLY=2
+MINIMAL=1
+XWINDOWS=2
+CONSOLEONLY=3
+PYTHON=4
 
 function create_dir_if_not_exists() {
     if [[ ! -d $1 ]]; then
@@ -26,6 +28,13 @@ function exit_if_not_installed() {
     if [[ $? != 0 ]]; then 
         echo install \'$1\' first and rerun script
         exit 1;
+    fi
+}
+
+function warn_if_not_installed() {
+    which $1 1>/dev/null
+    if [[ $? != 0 ]]; then 
+        echo Warning: \'$1\' is not installed.
     fi
 }
 
@@ -66,6 +75,10 @@ function github_repo {
 
 ## choose installation type: 'console-only' or 'xwindows' (default)
 case $1 in
+    'minimal')
+        echo "Minimal installation"
+        INSTALLTYPE=$MINIMAL
+        ;;
 	'console-only') 
 		echo "Console only installation"
 		INSTALLTYPE=$CONSOLEONLY
@@ -74,15 +87,22 @@ case $1 in
 		echo "Full installation"
 		INSTALLTYPE=$XWINDOWS
 		;;
+	'python') 
+		echo "Python dev installation"
+		INSTALLTYPE=$PYTHON
+		;;
 	*) 
 		echo "(default) Full installation"
-		INSTALLTYPE=$XWINDOWS
+		INSTALLTYPE=$MINIMAL
 		;;
 esac
 ## check if required packages are available
 exit_if_not_installed git
 exit_if_not_installed zsh
-exit_if_not_installed pip
+if [[ $INSTALLTYPE == $PYTHON ]]; then
+    exit_if_not_installed pip
+fi
+warn_if_not_installed tmux
 
 if [[ $INSTALLTYPE == $XWINDOWS ]]; then
 	exit_if_not_installed gvim
@@ -92,10 +112,12 @@ else
 fi
 
 ## check if required python packages are avaliable
-exit_if_pip_pkg_not_installed virtualenv
-exit_if_pip_pkg_not_installed virtualenvwrapper
-exit_if_pip_pkg_not_installed Markdown
-exit_if_pip_pkg_not_installed ipython
+if [[ $INSTALLTYPE == $PYTHON ]]; then
+    exit_if_pip_pkg_not_installed virtualenv
+    exit_if_pip_pkg_not_installed virtualenvwrapper
+    exit_if_pip_pkg_not_installed Markdown
+    exit_if_pip_pkg_not_installed ipython
+fi
 
 ## create required dirs
 if [[ $INSTALLTYPE == $XWINDOWS ]]; then
@@ -103,7 +125,10 @@ if [[ $INSTALLTYPE == $XWINDOWS ]]; then
 fi
 create_dir_if_not_exists $REPODIR
 create_dir_if_not_exists $VIMBUNDLE
-create_dir_if_not_exists ~/.virtualenvs
+
+if [[ $INSTALLTYPE == $PYTHON ]]; then
+    create_dir_if_not_exists ~/.virtualenvs
+fi
 
 ## public and third party repos
 if [[ $INSTALLTYPE == $XWINDOWS ]]; then
@@ -113,19 +138,26 @@ fi
 clone_git_repo https://github.com/mkos/zsh-config.git           $REPODIR/zsh-config
 clone_git_repo https://github.com/mkos/vim-config.git           $VIMBUNDLE/vim-config
 clone_git_repo https://github.com/gmarik/Vundle.vim.git         $VIMBUNDLE/Vundle.vim
-clone_git_repo https://github.com/robbyrussell/oh-my-zsh.git    $HOME/.oh-my-zsh
-clone_git_repo https://github.com/muennich/urxvt-perls.git      $REPODIR/urxvt-perls.git
+#clone_git_repo https://github.com/robbyrussell/oh-my-zsh.git    $HOME/.oh-my-zsh
+if [[ $INSTALLTYPE == $XWINDOWS ]]; then
+    clone_git_repo https://github.com/muennich/urxvt-perls.git      $REPODIR/urxvt-perls.git
+fi
 
 ## private repos
-clone_git_repo $DROPBOX/repos/scripts                           $REPODIR/scripts
-clone_git_repo $DROPBOX/repos/dotfiles                          $REPODIR/dotfiles
+#clone_git_repo $DROPBOX/repos/scripts                           $REPODIR/scripts
+if [[ $INSTALLTYPE == $XWINDOWS ]]; then
+    clone_git_repo $DROPBOX/repos/dotfiles                          $REPODIR/dotfiles
+fi
 
 ## create links to config files
 make_link $REPODIR/zsh-config/zshrc                 $HOME/.zshrc
 make_link $VIMBUNDLE/vim-config/vimrc               $HOME/.vimrc
 make_link $REPODIR/zsh-config/config/gitconfig      $HOME/.gitconfig
-make_link $REPODIR/dotfiles/xorg/xresources         $HOME/.Xresources
-make_link $REPODIR/dotfiles/systemd                 $HOME/.config/systemd
+
+if [[ $INSTALLTYPE == $XWINDOWS ]]; then
+    make_link $REPODIR/dotfiles/xorg/xresources         $HOME/.Xresources
+fi
+# make_link $REPODIR/dotfiles/systemd                 $HOME/.config/systemd
 make_link $REPODIR/zsh-config/config/tmux.conf      $HOME/.tmux.conf
 
 ## non-standard installation steps
