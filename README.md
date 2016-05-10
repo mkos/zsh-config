@@ -10,3 +10,10 @@ Also contains
     * make symbolic links to files in `local_config` to `~/.zsh` to activate them (__soon__: use `zplug` to manage them)
 * scripts
     * `install.sh` - simple script that prepares my environment
+
+First installation
+------------------
+
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkos/zsh-config/master/scripts/install.sh)"
+```
