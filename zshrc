@@ -16,13 +16,13 @@ source ~/.zplug/zplug
 
 # ZPLUG CONFIG
 # previous themes: gentoo-mod, bira, jonathan
-zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh
+zplug "robbyrussell/oh-my-zsh", of:oh-my-zsh.sh, nice:-14
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/screen", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 zplug "jocelynmallon/zshmarks"
-zplug "denysdovhan/spaceship-zsh-theme", from:github, as:plugin
+zplug "denysdovhan/spaceship-zsh-theme", of:spaceship.zsh-theme 
 
 SPACESHIP_RUBY_SHOW=false
 SPACESHIP_NVM_SHOW=false
