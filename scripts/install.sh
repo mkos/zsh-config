@@ -12,7 +12,7 @@ PYTHON=4
 
 function create_dir_if_not_exists {
     if [[ ! -d $1 ]]; then
-        mkdir $1
+        mkdir -p $1
         echo creating $1
     fi
 }
