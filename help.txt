@@ -8,10 +8,28 @@ __syncdir__ _localdir_ _remotedir_ - synchronizes with rsync with remote host
 __syncname__ _name_ - synchronizes dirs configured in ~/config/sync/syncrc with given name
 __lastpac__ - shows date of last system update with pacman
 
+Commandline
+===========
+
+Argument of last command
+------------------------
+
+* `$_`          - variable that keeps arguments of last command
+* `!$`          - glob enhance - keeps _last_ argument of last command
+* `!*`          - ditto, but keeps all arguments
+* `!:1`         - first argument of last command
+* `!:1-2`       - first & second argument of last command
+* `^str^subst`  - substitutes `str` in previous command with `subst`
+
 Keybindings
 ===========
 
 * __Ctrl-R__ - reverse history search
+
+Tmux
+----
+
+* `C-a ,` - rename window
 
 Programming
 ===========
@@ -22,3 +40,4 @@ Varia
 =====
 
 man zshzle
+
