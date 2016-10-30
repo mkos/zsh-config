@@ -141,3 +141,14 @@ function vv {
         *) workon $1;;
     esac
 }
+
+
+# sourcing local config files if config directory exist
+function source_local_config {
+    local config_dir=$1
+    if [[ -e $config_dir ]] && [[ -d $config_dir ]]; then
+        for file in `ls $config_dir`; do
+            source $config_dir/$file
+        done
+    fi
+}
