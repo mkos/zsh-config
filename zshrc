@@ -12,7 +12,7 @@ if [ ! -d $ZPLUG_HOME ]; then
 fi
 
 # source zplug
-source ~/.zplug/zplug
+source ~/.zplug/init.zsh
 
 # ZPLUG CONFIG
 # previous themes: gentoo-mod, bira, jonathan
@@ -23,7 +23,7 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/screen", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 zplug "jocelynmallon/zshmarks"
-zplug "denysdovhan/spaceship-zsh-theme"
+zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh-theme
 
 SPACESHIP_RUBY_SHOW=false
 SPACESHIP_NVM_SHOW=false
