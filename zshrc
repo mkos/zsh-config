@@ -12,7 +12,7 @@ if [ ! -d $ZPLUG_HOME ]; then
 fi
 
 # source zplug
-source ~/.zplug/zplug
+source ~/.zplug/init.zsh
 
 # ZPLUG CONFIG
 # previous themes: gentoo-mod, bira, jonathan
