@@ -142,7 +142,6 @@ function vv {
     esac
 }
 
-
 # sourcing local config files if config directory exist
 function source_local_config {
     local config_dir=$1
@@ -150,5 +149,15 @@ function source_local_config {
         for file in `ls $config_dir`; do
             source $config_dir/$file
         done
+    fi
+}
+
+# When using tmux in conjunction with SSH agent forwarding, tmux sessions on the
+# remote machine will not reread SSH_AUTH_SOCK env variable after new login and
+# attaching session. This is semi-automatic way to overcome it.
+
+function ssh_refresh {
+    if [[ -n "${TMUX}" ]]; then
+        export $(tmux show-environment | grep "^SSH_AUTH_SOCK") 
     fi
 }
