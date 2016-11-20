@@ -141,3 +141,13 @@ function vv {
         *) workon $1;;
     esac
 }
+
+# When using tmux in conjunction with SSH agent forwarding, tmux sessions on the
+# remote machine will not reread SSH_AUTH_SOCK env variable after new login and
+# attaching session. This is semi-automatic way to overcome it.
+
+function ssh_refresh {
+    if [[ -n "${TMUX}" ]]; then
+        export $(tmux show-environment | grep "^SSH_AUTH_SOCK") 
+    fi
+}
