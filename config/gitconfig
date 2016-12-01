@@ -24,6 +24,7 @@
 	brv = branch -vv
 [merge]
 	tool = gvimdiff
+	ff = false
 [diff]
 	tool = winmerge
 [difftool "vimdiff"]
