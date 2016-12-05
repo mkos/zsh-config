@@ -26,6 +26,8 @@
 [merge]
 	tool = gvimdiff
 	ff = false
+[pull]
+    ff = only           # this will override merge.ff when pulling
 [diff]
 	tool = winmerge
 [difftool "vimdiff"]
