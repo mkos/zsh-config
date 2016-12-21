@@ -51,3 +51,5 @@
 	ui = true
 [push]
 	default = matching
+[pager]
+    stash = false
