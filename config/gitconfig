@@ -28,27 +28,29 @@
 [pull]
     ff = only           # this will override merge.ff when pulling
 [diff]
-	tool = winmerge
-[difftool "vimdiff"]
+	tool = vimdiff
+[difftool "winvimdiff"]
 	path = C:\\Program Files (x86)\\Vim\\vim74\\gvim.exe
 	cmd = gvim -d
 [core]
 	autocrlf = input    # for Windows: true
 [difftool "winmerge"]
 	cmd = \"$PROGRAMFILES/WinMerge/WinMergeU.exe\" -e -u -dl \"Local\" -dr \"Remote\" \"$LOCAL\" \"$REMOTE\"
+[difftool "idea"]
+    cmd = "/usr/local/bin/idea $(cd $(dirname \"$LOCAL\") && pwd)/$(basename \"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(basename \"$REMOTE\")"
 [difftool]
-	prompt = false
-[push]
-	default = simple
-[mergetool "winmerge"]
-	cmd = \"c:\\Program Files (x86)\\WinMerge\\WinMergeU.exe\" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+	prompt = true
+
+## merge
+
+[merge]
+	tool = vimdiff
+	ff = false
+    conflictstyle = diff3
 [mergetool]
 	prompt = false
-[clean]
-	requireForce = false
-[color]
-	ui = true
-[push]
-	default = matching
-[pager]
-    stash = false
+[mergetool "winmerge"]
+	cmd = \"c:\\Program Files (x86)\\WinMerge\\WinMergeU.exe\" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+[mergetool "splice"]
+    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+    trustExitCode = true
