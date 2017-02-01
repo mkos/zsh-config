@@ -42,21 +42,27 @@
 ## diff
 
 [diff]
-	tool = winmerge
-[difftool "vimdiff"]
+	tool = vimdiff
+[difftool "winvimdiff"]
 	path = C:\\Program Files (x86)\\Vim\\vim74\\gvim.exe
 	cmd = gvim -d
 [difftool "winmerge"]
 	cmd = \"$PROGRAMFILES/WinMerge/WinMergeU.exe\" -e -u -dl \"Local\" -dr \"Remote\" \"$LOCAL\" \"$REMOTE\"
+[difftool "idea"]
+    cmd = "/usr/local/bin/idea $(cd $(dirname \"$LOCAL\") && pwd)/$(basename \"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(basename \"$REMOTE\")"
 [difftool]
-	prompt = false
+	prompt = true
 
 ## merge
 
 [merge]
-	tool = gvimdiff
+	tool = vimdiff
 	ff = false
-[mergetool "winmerge"]
-	cmd = \"c:\\Program Files (x86)\\WinMerge\\WinMergeU.exe\" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+    conflictstyle = diff3
 [mergetool]
 	prompt = false
+[mergetool "winmerge"]
+	cmd = \"c:\\Program Files (x86)\\WinMerge\\WinMergeU.exe\" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+[mergetool "splice"]
+    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+    trustExitCode = true
