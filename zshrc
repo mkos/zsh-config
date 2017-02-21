@@ -76,6 +76,9 @@ alias sc="systemctl"
 alias scu="systemctl --user"
 alias slog="journalctl -xn"
 
+# virtualenv aliases
+alias cdp=cdproject
+
 # key bindings (to get the bindings, enter 'cat' and push the button)
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
