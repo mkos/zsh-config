@@ -49,6 +49,10 @@ source_local_config $LOCAL_CONFIG
 export EDITOR="vim"
 export PYTHONDOCS=/usr/share/doc/python2/html
 
+# less pager config: (-F) quit if file fits in one screen, (-Q) quiet - never ring a bell, (-X) no termcap init
+# (-R) show ANSI colors, (-E) exit on EOF
+export LESS='-F -X -Q -R -E'
+
 # for syncname()
 export SYNCRC=$HOME/.config/sync/syncrc
 
