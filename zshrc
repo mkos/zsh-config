@@ -44,6 +44,7 @@ zplug load
 
 source $CONFIG/util.zsh
 source_local_config $LOCAL_CONFIG
+set_tmux_version_vars
 
 # other env vars
 export EDITOR="vim"

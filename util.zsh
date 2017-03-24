@@ -161,3 +161,21 @@ function ssh_refresh {
         export $(tmux show-environment | grep "^SSH_AUTH_SOCK") 
     fi
 }
+
+# checks if executable exists
+# reference: http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
+function exec_exists() {
+
+    if hash $1 2>/dev/null; then 
+        return 0
+    else
+        return 1
+    fi 
+}
+
+# sets tmux version variables
+function set_tmux_version_vars() {
+    if exec_exists tmux; then
+        eval `tmux -V | sed -r 's/tmux\s+([0-9]+)\.([0-9]+)/export TMUX_VERSION_MAJOR=\1 TMUX_VERSION_MINOR=\2/g'`
+    fi
+}
