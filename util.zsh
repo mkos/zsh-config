@@ -183,7 +183,7 @@ function set_tmux_version_vars() {
 # following functions bring ssh tunnel up/down. Tunnels need to be defined in .ssh/config file
 function tunnel() {
     if [[ "$#" -ne 2  ]]; then
-        echo "provide command (up|down) and tunnel name to start."
+        echo "provide command (up|down|status) and tunnel name to start."
     else
         case $1 in
             up)
@@ -196,7 +196,7 @@ function tunnel() {
                 ssh -T -O check $2
                 ;;
             *)
-                echo "unknown command:", $1
+                echo "unknown command:" $1
         esac
     fi
 }
