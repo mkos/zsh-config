@@ -179,3 +179,25 @@ function set_tmux_version_vars() {
         eval `tmux -V | sed -r 's/tmux\s+([0-9]+)\.([0-9]+)/export TMUX_VERSION_MAJOR=\1 TMUX_VERSION_MINOR=\2/g'`
     fi
 }
+
+# following functions bring ssh tunnel up/down. Tunnels need to be defined in .ssh/config file
+function tunnel() {
+    if [[ "$#" -ne 2  ]]; then
+        echo "provide command (up|down) and tunnel name to start."
+    else
+        case $1 in
+            up)
+                ssh -fNM $2
+                ;;
+            down)
+                ssh -T -O exit $2
+                ;;
+            status)
+                ssh -T -O check $2
+                ;;
+            *)
+                echo "unknown command:", $1
+        esac
+    fi
+}
+
