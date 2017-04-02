@@ -85,8 +85,10 @@ alias slog="journalctl -xn"
 alias cdp=cdproject
 
 # key bindings (to get the bindings, enter 'cat' and push the button)
+# binds leftarrow and ctrl-w to beginning of line and rightarrow to end of line - ctrl-e is by default
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
+bindkey "^w"    beginning-of-line
 bindkey "^D"    tmux-detach-client
 bindkey "^R"    history-incremental-search-backward
 
