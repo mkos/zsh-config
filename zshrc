@@ -17,15 +17,12 @@ source ~/.zplug/init.zsh
 # ZPLUG CONFIG
 # previous themes: gentoo-mod, bira, jonathan
 zplug "zplug/zplug"
-zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, nice:-14
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh, lazy:true
-zplug "plugins/screen", from:oh-my-zsh, lazy:true
-zplug "jocelynmallon/zshmarks"
-zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh-theme
-
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_NVM_SHOW=false
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
+#zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
+#zplug "plugins/git", from:oh-my-zsh
+#zplug "plugins/screen", from:oh-my-zsh, lazy:true
+#zplug "jocelynmallon/zshmarks"
 
 # Path to your oh-my-zsh configuration
 CONFIG=$HOME/repos/zsh-config
@@ -38,8 +35,20 @@ ZSH_CUSTOM=$CONFIG
 # Comment this out to disable bi-weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
 
+# vi mode timeout
+export KEYTIMEOUT=1
+
 # load zplug plugins
 zplug load
+
+# spaceship
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_RUBY_SHOW=false
+SPACESHIP_NODE_SHOW=false
+
+SPACESHIP_GIT_BRANCH_PREFIX=""
+SPACESHIP_GIT_BRANCH_SUFFIX=""
+SPACESHIP_GIT_STATUS_PREFIX=" ["
 
 
 source $CONFIG/util.zsh
