@@ -19,10 +19,9 @@ source ~/.zplug/init.zsh
 zplug "zplug/zplug"
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
-#zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
-#zplug "plugins/git", from:oh-my-zsh
-#zplug "plugins/screen", from:oh-my-zsh, lazy:true
+zplug "jreese/zsh-titles", from:github
 #zplug "jocelynmallon/zshmarks"
+#zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
 
 # Path to your oh-my-zsh configuration
 CONFIG=$HOME/repos/zsh-config
@@ -71,6 +70,7 @@ export SYNCRC=$HOME/.config/sync/syncrc
 zle -N tmux-detach-client tmux_detach_logout
 
 # aliases
+alias ll="ls -al"
 alias ls="ls --color=auto --group-directories-first"
 alias svim="gvim --remote-silent"
 alias lx="ls --group-directories-first -AF"
