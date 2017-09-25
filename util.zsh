@@ -142,6 +142,16 @@ function vv {
     esac
 }
 
+# sourcing local config files if config directory exist
+function source_local_config {
+    local config_dir=$1
+    if [[ -e $config_dir ]] && [[ -d $config_dir ]]; then
+        for file in `ls $config_dir`; do
+            source $config_dir/$file
+        done
+    fi
+}
+
 # When using tmux in conjunction with SSH agent forwarding, tmux sessions on the
 # remote machine will not reread SSH_AUTH_SOCK env variable after new login and
 # attaching session. This is semi-automatic way to overcome it.
@@ -149,5 +159,44 @@ function vv {
 function ssh_refresh {
     if [[ -n "${TMUX}" ]]; then
         export $(tmux show-environment | grep "^SSH_AUTH_SOCK") 
+    fi
+}
+
+# checks if executable exists
+# reference: http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
+function exec_exists() {
+
+    if hash $1 2>/dev/null; then 
+        return 0
+    else
+        return 1
+    fi 
+}
+
+# sets tmux version variables
+function set_tmux_version_vars() {
+    if exec_exists tmux; then
+        eval `tmux -V | sed -r 's/tmux\s+([0-9]+)\.([0-9]+)/export TMUX_VERSION_MAJOR=\1 TMUX_VERSION_MINOR=\2/g'`
+    fi
+}
+
+# following functions bring ssh tunnel up/down. Tunnels need to be defined in .ssh/config file
+function tunnel() {
+    if [[ "$#" -ne 2  ]]; then
+        echo "provide command (up|down|status) and tunnel name to start."
+    else
+        case $1 in
+            up)
+                ssh -fNM $2
+                ;;
+            down)
+                ssh -T -O exit $2
+                ;;
+            status)
+                ssh -T -O check $2
+                ;;
+            *)
+                echo "unknown command:" $1
+        esac
     fi
 }

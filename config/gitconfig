@@ -6,10 +6,25 @@
 # in your ~/.gitconfig. This way you can separate machine specific config (like user and email)
 # For reference, see: https://github.com/gitster/git/commit/9b25a0b52e09400719366f0a33d0d0da98bbf7b0
 
+[core]
+	autocrlf = input    # for Windows: true
+[pull]
+    ff = only           # this will override merge.ff when pulling
+[push]
+	default = matching
 [credential]
 	helper = wincred
 [http]
 	sslverify = true
+[clean]
+	requireForce = false
+[color]
+	ui = true
+[pager]
+    stash = false
+
+## aliases
+
 [alias]
 	ci = commit
 	st = status
@@ -21,19 +36,16 @@
 	aliases = config --get-regexp alias
 	vis = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cr %C(blue)%an%Creset\"
 	visall = log --graph --all --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cr %C(blue)%an%Creset\"
+	visalld = log --graph --all --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cD %C(blue)%an%Creset\"
 	brv = branch -vv
-[merge]
-	tool = gvimdiff
-	ff = false
-[pull]
-    ff = only           # this will override merge.ff when pulling
+
+## diff
+
 [diff]
 	tool = vimdiff
 [difftool "winvimdiff"]
 	path = C:\\Program Files (x86)\\Vim\\vim74\\gvim.exe
 	cmd = gvim -d
-[core]
-	autocrlf = input    # for Windows: true
 [difftool "winmerge"]
 	cmd = \"$PROGRAMFILES/WinMerge/WinMergeU.exe\" -e -u -dl \"Local\" -dr \"Remote\" \"$LOCAL\" \"$REMOTE\"
 [difftool "idea"]
@@ -54,3 +66,7 @@
 [mergetool "splice"]
     cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
     trustExitCode = true
+[push]
+	default = simple
+[pull]
+	default = simple
