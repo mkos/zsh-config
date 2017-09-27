@@ -18,7 +18,7 @@ source ~/.zplug/init.zsh
 # previous themes: gentoo-mod, bira, jonathan
 zplug "zplug/zplug"
 zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
+zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme, at:v2.8.0
 zplug "jreese/zsh-titles", from:github
 #zplug "jocelynmallon/zshmarks"
 #zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
@@ -44,11 +44,12 @@ zplug load
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_RUBY_SHOW=false
 SPACESHIP_NODE_SHOW=false
+SPACESHIP_PHP_SHOW=false
+SPACESHIP_PACKAGE_SHOW=false
 
 SPACESHIP_GIT_BRANCH_PREFIX=""
 SPACESHIP_GIT_BRANCH_SUFFIX=""
 SPACESHIP_GIT_STATUS_PREFIX=" ["
-
 
 source $CONFIG/util.zsh
 source_local_config $LOCAL_CONFIG
