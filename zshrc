@@ -114,5 +114,20 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 # stop capturing ctrl-d (for tmux logout)
 setopt IGNORE_EOF
 
+# ssh/scp/slogin autocomplete hosts
+# source: https://serverfault.com/questions/170346/how-to-edit-command-completion-for-ssh-on-zsh
+h=()
+if [[ -r ~/.ssh/config ]]; then
+    h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+if [[ -r ~/.ssh/known_hosts ]]; then
+    h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+if [[ $#h -gt 0 ]]; then
+    zstyle ':completion:*:ssh:*' hosts $h
+    zstyle ':completion:*:scp:*' hosts $h
+    zstyle ':completion:*:slogin:*' hosts $h
+fi
+
 # this should be called as a very last command
 tmux_autostart
