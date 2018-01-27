@@ -79,6 +79,7 @@ alias cls="clear"
 alias ds="du -h --max-depth=1 | sort -h -r"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias rssh="rsync -avz -e \"ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null\" --progress"
+alias pipall="pip list --outdated --format=freeze | cut -d = -f 1 | xargs -n1 pip install -U"
 alias j=jump
 
 # ssh-agent aliases
