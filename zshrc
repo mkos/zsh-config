@@ -41,7 +41,7 @@ export KEYTIMEOUT=1
 zplug load
 
 # spaceship
-SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_SHOW=false
 SPACESHIP_RUBY_SHOW=false
 SPACESHIP_NODE_SHOW=false
 SPACESHIP_PHP_SHOW=false
@@ -50,6 +50,9 @@ SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_GIT_BRANCH_PREFIX=""
 SPACESHIP_GIT_BRANCH_SUFFIX=""
 SPACESHIP_GIT_STATUS_PREFIX=" ["
+
+SPACESHIP_PYENV_SYMBOL=@
+SPACESHIP_PYENV_COLOR=green
 
 source $CONFIG/util.zsh
 source_local_config $LOCAL_CONFIG
@@ -129,6 +132,13 @@ if [[ $#h -gt 0 ]]; then
     zstyle ':completion:*:ssh:*' hosts $h
     zstyle ':completion:*:scp:*' hosts $h
     zstyle ':completion:*:slogin:*' hosts $h
+fi
+
+# pyenv
+which pyenv > /dev/null
+if [[ $? == 0 ]]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 # this should be called as a very last command
