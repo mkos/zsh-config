@@ -135,9 +135,13 @@ if [[ $#h -gt 0 ]]; then
 fi
 
 # pyenv
-which pyenv > /dev/null
-if [[ $? == 0 ]]; then
+if which pyenv > /dev/null 2&>1; then
     eval "$(pyenv init -)"
+    # Temporary fix for homebrew issue
+    . /usr/local/share/zsh/site-functions/pyenv.zsh
+fi
+
+if which pyenv-virtualenv-init > /dev/null 2&>1; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
