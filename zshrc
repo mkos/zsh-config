@@ -41,6 +41,7 @@ export KEYTIMEOUT=1
 zplug load
 
 # spaceship
+SPACESHIP_EXEC_TIME_SHOW=false
 SPACESHIP_TIME_SHOW=false
 SPACESHIP_RUBY_SHOW=false
 SPACESHIP_NODE_SHOW=false
