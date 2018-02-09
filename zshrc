@@ -15,10 +15,10 @@ fi
 source ~/.zplug/init.zsh
 
 # ZPLUG CONFIG
-# version locking - at:v2.8.0
+# version locking for zsh<5.0.4 - at:v2.8.0
+zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
 zplug "zplug/zplug"
 zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
 zplug "jreese/zsh-titles", from:github
 #zplug "jocelynmallon/zshmarks"
 #zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
