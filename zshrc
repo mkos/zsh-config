@@ -136,13 +136,27 @@ if [[ $#h -gt 0 ]]; then
     zstyle ':completion:*:slogin:*' hosts $h
 fi
 
-# pyenv
-if which pyenv > /dev/null 2&>1; then
-    eval "$(pyenv init -)"
-    # Temporary fix for homebrew issue
-    . /usr/local/share/zsh/site-functions/pyenv.zsh
+##
+## pyenv
+##
+
+# check if it's local installation of pyenv (in ~/.pyenv) and setup proper env vars
+if [[ -e $HOME/.pyenv/bin ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
 fi
 
+# init pyenv
+if which pyenv > /dev/null 2&>1; then
+    eval "$(pyenv init -)"
+
+    # Temporary fix for homebrew issue - OSX specific
+    if [[ -e /usr/local/share/zsh/site-functions/pyenv.zsh ]]; then
+        . /usr/local/share/zsh/site-functions/pyenv.zsh
+    fi
+fi
+
+# init pyenv-virtualenv
 if which pyenv-virtualenv-init > /dev/null 2&>1; then
     eval "$(pyenv virtualenv-init -)"
 fi
