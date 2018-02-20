@@ -147,7 +147,7 @@ if [[ -e $HOME/.pyenv/bin ]]; then
 fi
 
 # init pyenv
-if which pyenv > /dev/null 2&>1; then
+if which pyenv > /dev/null 2>&1; then
     eval "$(pyenv init -)"
 
     # Temporary fix for homebrew issue - OSX specific
@@ -157,7 +157,7 @@ if which pyenv > /dev/null 2&>1; then
 fi
 
 # init pyenv-virtualenv
-if which pyenv-virtualenv-init > /dev/null 2&>1; then
+if which pyenv-virtualenv-init > /dev/null 2>&1; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
