@@ -38,7 +38,7 @@
 	visall = log --graph --all --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cr %C(blue)%an%Creset\"
 	visalld = log --graph --all --pretty=format:\"%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen%cD %C(blue)%an%Creset\"
 	brv = branch -vv
-    orig = checkout --
+    reinstate = checkout --
     unstage = reset HEAD --
 ## diff
 
