@@ -161,5 +161,10 @@ if which pyenv-virtualenv-init > /dev/null 2>&1; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+
+# init fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 # this should be called as a very last command
 tmux_autostart
