@@ -1,6 +1,7 @@
 # make sure that zplug is installed
 
-ZPLUG_HOME=$HOME/.zplug
+ZPLUG_HOME=${ZPLUG_HOME:-$HOME/.zplug}
+
 
 if [ ! -d $ZPLUG_HOME ]; then
     which git
