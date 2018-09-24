@@ -74,13 +74,25 @@ function reload_config() {
 #   - local dir
 #   - remote dir
 function syncdir() {
-
-    local localdir=$1
-    local remotedir=$2
+    
+    if [[ -f .remote ]]; then
+        local localdir=.
+        local remotedir=`cat .remote`
+    else
+        if [[ $1 == '' || $2 == '' ]]; then
+            return 1
+        fi
+        local localdir=$1
+        local remotedir=$2
+    fi
     rsync -rvtW \
         --delete \
         --modify-window=30 \
         --progress \
+        --exclude '.git' \
+        --exclude '*.pyc' \
+        --exclude '.remote' \
+        --exclude-from '.gitignore' \
         -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
         $localdir \
         $remotedir
