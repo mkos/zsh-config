@@ -168,6 +168,16 @@ if which pyenv-virtualenv-init > /dev/null 2>&1; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+# History settings
+
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+export HISTFILE=~/.zhistory
+
+setopt HIST_FIND_NO_DUPS
+
+setopt inc_append_history
+setopt share_history
 
 # init fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
