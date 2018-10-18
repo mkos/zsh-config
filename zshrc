@@ -121,7 +121,9 @@ compctl -K _pip_completion pip
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/repos
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+if [[ -r /usr/local/bin/virtualenvwrapper_lazy.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
+fi
 
 # stop capturing ctrl-d (for tmux logout)
 setopt IGNORE_EOF
