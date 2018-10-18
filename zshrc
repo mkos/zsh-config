@@ -15,6 +15,10 @@ fi
 # source zplug
 source ~/.zplug/init.zsh
 
+# Path setting for gnutils
+
+export PATH=/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+
 # ZPLUG CONFIG
 # version locking for zsh<5.0.4 - at:v2.8.0
 zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
