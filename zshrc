@@ -188,7 +188,7 @@ export CLOUD_SDK_PATH=$HOME/opt/google-cloud-sdk
 if [ -d $CLOUD_SDK_PATH ]; then
 
     # pick the latest 2.x python from pyenv
-    CLOUDSDK_PYTHON=$(pyenv prefix $(pyenv versions --bare --skip-aliases | grep ^2 | grep -v \/))/bin/python
+    export CLOUDSDK_PYTHON=$(pyenv prefix $(pyenv versions --bare --skip-aliases | grep ^2 | grep -v \/))/bin/python
 
     # The next line updates PATH for the Google Cloud SDK.
     if [ -f $CLOUD_SDK_PATH/path.zsh.inc ]; then
