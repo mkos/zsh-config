@@ -20,3 +20,11 @@ First installation
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkos/zsh-config/master/scripts/install.sh)"
 ```
+
+Running without breaking config of the account
+----------------------------------------------
+
+This repo must be cloned to `$HOME/somedir/repos`, `zshrc` has to be linked to `$HOME/somedir/.zshrc`
+```
+ZDOTDIR=$HOME/somedir ROOTDIR=$HOME/somedir zsh
+```
