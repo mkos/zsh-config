@@ -184,7 +184,7 @@ setopt share_history
 [ -f $ROOTDIR/.fzf.zsh ] && source $ROOTDIR/.fzf.zsh
 
 # Google Cloud SDK setup
-export CLOUD_SDK_PATH=$HOME/opt/google-cloud-sdk
+export CLOUD_SDK_PATH=$ROOTDIR/opt/google-cloud-sdk
 
 if [ -d $CLOUD_SDK_PATH ]; then
 
