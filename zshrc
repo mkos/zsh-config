@@ -183,6 +183,23 @@ setopt share_history
 # init fzf
 [ -f $ROOTDIR/.fzf.zsh ] && source $ROOTDIR/.fzf.zsh
 
+# Google Cloud SDK setup
+export CLOUD_SDK_PATH=$HOME/opt/google-cloud-sdk
 
+if [ -d $CLOUD_SDK_PATH ]; then
+
+    # pick the latest 2.x python from pyenv
+    export CLOUDSDK_PYTHON=$(pyenv prefix $(pyenv versions --bare --skip-aliases | grep ^2 | grep -v \/))/bin/python
+
+    # The next line updates PATH for the Google Cloud SDK.
+    if [ -f $CLOUD_SDK_PATH/path.zsh.inc ]; then
+        . $CLOUD_SDK_PATH/path.zsh.inc
+    fi
+
+    # The next line enables shell command completion for gcloud.
+    if [ -f $CLOUD_SDK_PATH/completion.zsh.inc ]; then
+        . $CLOUD_SDK_PATH/completion.zsh.inc
+    fi
+fi
 # this should be called as a very last command
 tmux_autostart
