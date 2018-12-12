@@ -1,0 +1,1 @@
+tmux -f kosa/repos/zsh-config/config/tmux.conf

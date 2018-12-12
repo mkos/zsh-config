@@ -1,6 +1,7 @@
 # make sure that zplug is installed
 
-ZPLUG_HOME=${ZPLUG_HOME:-$HOME/.zplug}
+ROOTDIR=${ROOTDIR:-$HOME}
+ZPLUG_HOME=${ZPLUG_HOME:-$ROOTDIR/.zplug}
 
 
 if [ ! -d $ZPLUG_HOME ]; then
@@ -13,7 +14,7 @@ if [ ! -d $ZPLUG_HOME ]; then
 fi
 
 # source zplug
-source ~/.zplug/init.zsh
+source $ROOTDIR/.zplug/init.zsh
 
 # Path setting for gnutils
 
@@ -29,8 +30,8 @@ zplug "jreese/zsh-titles", from:github
 #zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
 
 # Path to your oh-my-zsh configuration
-CONFIG=$HOME/repos/zsh-config
-LOCAL_CONFIG=$HOME/.zsh
+CONFIG=$ROOTDIR/repos/zsh-config
+LOCAL_CONFIG=$ROOTDIR/.zsh
 
 # Set customization directory to this repo
 # see: https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#using-another-customization-directory
@@ -74,7 +75,7 @@ export PYTHONDOCS=/usr/share/doc/python2/html
 export LESS='-F -X -Q -R -E'
 
 # for syncname()
-export SYNCRC=$HOME/.config/sync/syncrc
+export SYNCRC=$ROOTDIR/.config/sync/syncrc
 
 # ZLE mappings
 # maps function from util.zsh to a zle command
@@ -93,7 +94,7 @@ alias pipall="pip list --outdated --format=freeze | cut -d = -f 1 | xargs -n1 pi
 alias j=jump
 
 # ssh-agent aliases
-alias keyup="ssh-add $HOME/.ssh/id_rsa.key"
+alias keyup="ssh-add $ROOTDIR/.ssh/id_rsa.key"
 alias keydown="ssh-add -D"
 alias keyst="ssh-add -l"
 alias agentup="eval `ssh-agent`"
@@ -118,8 +119,8 @@ bindkey "^R"    history-incremental-search-backward
 compctl -K _pip_completion pip
 
 # virtualenv config
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/repos
+export WORKON_HOME=$ROOTDIR/.virtualenvs
+export PROJECT_HOME=$ROOTDIR/repos
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 if [[ -r /usr/local/bin/virtualenvwrapper_lazy.sh ]]; then
     source /usr/local/bin/virtualenvwrapper_lazy.sh
@@ -131,10 +132,10 @@ setopt IGNORE_EOF
 # ssh/scp/slogin autocomplete hosts
 # source: https://serverfault.com/questions/170346/how-to-edit-command-completion-for-ssh-on-zsh
 h=()
-if [[ -r ~/.ssh/config ]]; then
+if [[ -r $ROOTDIR/.ssh/config ]]; then
     h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
 fi
-if [[ -r ~/.ssh/known_hosts ]]; then
+if [[ -r $ROOTDIR/.ssh/known_hosts ]]; then
     h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
 fi
 if [[ $#h -gt 0 ]]; then
@@ -148,8 +149,8 @@ fi
 ##
 
 # check if it's local installation of pyenv (in ~/.pyenv) and setup proper env vars
-if [[ -e $HOME/.pyenv/bin ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
+if [[ -e $ROOTDIR/.pyenv/bin ]]; then
+    export PYENV_ROOT="$ROOTDIR/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
 fi
 
@@ -172,7 +173,7 @@ fi
 
 export HISTSIZE=100000
 export HISTFILESIZE=100000
-export HISTFILE=~/.zhistory
+export HISTFILE=$ROOTDIR/.zhistory
 
 setopt HIST_FIND_NO_DUPS
 
@@ -180,7 +181,7 @@ setopt inc_append_history
 setopt share_history
 
 # init fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $ROOTDIR/.fzf.zsh ] && source $ROOTDIR/.fzf.zsh
 
 
 # this should be called as a very last command
