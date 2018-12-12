@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ZDOTDIR=$HOME/kosa ROOTDIR=$HOME/kosa zsh
