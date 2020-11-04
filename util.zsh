@@ -74,7 +74,7 @@ function reload_config() {
 #   - local dir
 #   - remote dir
 function syncdir() {
-    
+
     if [[ -f .remote ]]; then
         local localdir=.
         local remotedir=`cat .remote`
@@ -170,7 +170,7 @@ function source_local_config {
 
 function ssh_refresh {
     if [[ -n "${TMUX}" ]]; then
-        export $(tmux show-environment | grep "^SSH_AUTH_SOCK") 
+        export $(tmux show-environment | grep "^SSH_AUTH_SOCK")
     fi
 }
 
@@ -178,11 +178,11 @@ function ssh_refresh {
 # reference: http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
 function exec_exists() {
 
-    if hash $1 2>/dev/null; then 
+    if hash $1 2>/dev/null; then
         return 0
     else
         return 1
-    fi 
+    fi
 }
 
 # sets tmux version variables
@@ -213,3 +213,13 @@ function tunnel() {
     fi
 }
 
+function add_kernel() {
+    # check virtualenv
+    # echo $VIRTUAL_ENV
+    # /Users/mkosinski/.pyenv/versions/3.6.6/envs/kaggle
+    display_name="$venv_name ($python_version)"
+    internal_name=$normalized_venv_name
+
+    # add kernel
+    python -m ipykernel install --user --name $internal_name --display-name $display_name
+}
