@@ -5,13 +5,19 @@
 #
 # in your ~/.gitconfig. This way you can separate machine specific config (like user and email)
 # For reference, see: https://github.com/gitster/git/commit/9b25a0b52e09400719366f0a33d0d0da98bbf7b0
+#
+# alternatively:
+#
+# $ git config --local include.path "$PWD/.gitconfig"
+#
+# Source: https://superuser.com/questions/927867/how-to-load-arbitrary-config-file-via-git
 
 [core]
 	autocrlf = input    # for Windows: true
 [pull]
     ff = only           # this will override merge.ff when pulling
 [push]
-	default = matching
+	default = current
 [credential]
 	helper = wincred
 [http]
