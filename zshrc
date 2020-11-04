@@ -26,8 +26,10 @@ zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:them
 zplug "zplug/zplug"
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "jreese/zsh-titles", from:github
-#zplug "jocelynmallon/zshmarks"
-#zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
+#zplug "marlonrichert/zsh-autocomplete", as:plugin, from:github, defer:2
+zplug "zsh-users/zsh-syntax-highlighting", as:plugin, defer:2
+zplug "jocelynmallon/zshmarks", from:github
+zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
 
 # Path to your oh-my-zsh configuration
 CONFIG=$ROOTDIR/repos/zsh-config
