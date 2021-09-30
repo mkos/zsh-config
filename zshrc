@@ -32,7 +32,7 @@ zplug "jocelynmallon/zshmarks", from:github
 zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, defer:2
 
 # Path to your oh-my-zsh configuration
-CONFIG=$ROOTDIR/repos/zsh-config
+CONFIG=$ROOTDIR/projects/zsh-config
 LOCAL_CONFIG=$ROOTDIR/.zsh
 
 # Set customization directory to this repo
@@ -105,6 +105,8 @@ alias agentup="eval `ssh-agent`"
 alias sc="systemctl"
 alias scu="systemctl --user"
 alias slog="journalctl -xn"
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
+alias mbrew='arch -arm64e /opt/homebrew/bin/brew'
 
 # virtualenv aliases
 alias cdp=cdproject
